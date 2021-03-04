@@ -1,19 +1,26 @@
 <idea-plugin>
-    <id>com.github.lightliang.jetpackmvvmtemplate</id>
-    <name>JetpackMVVMTemplate</name>
-    <vendor>light-liang</vendor>
+    <id>com.liang.mvvmtemplate</id>
+    <name>MVVMTemplate</name>
+    <vendor>liang</vendor>
 
     <!-- Product and plugin compatibility requirements -->
     <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>org.jetbrains.android</depends>
+    <depends>org.jetbrains.kotlin</depends>
+    <depends>com.intellij.modules.java</depends>
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.lightliang.jetpackmvvmtemplate.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.lightliang.jetpackmvvmtemplate.services.MyProjectService"/>
+        <applicationService serviceImplementation="com.liang.mvvmtemplate.services.MyApplicationService"/>
+        <projectService serviceImplementation="com.liang.mvvmtemplate.services.MyProjectService"/>
     </extensions>
 
     <applicationListeners>
-        <listener class="com.github.lightliang.jetpackmvvmtemplate.listeners.MyProjectManagerListener"
+        <listener class="com.liang.mvvmtemplate.listeners.MyProjectManagerListener"
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </applicationListeners>
+
+    <extensions defaultExtensionNs="com.android.tools.idea.wizard.template">
+        <wizardTemplateProvider implementation="other.SamplePluginTemplateProviderImpl" />
+    </extensions>
 </idea-plugin>
